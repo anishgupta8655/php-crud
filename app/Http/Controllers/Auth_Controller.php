@@ -43,7 +43,7 @@ class Auth_Controller extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:5|max:30'
+            'password' => 'required|min:4|max:30'
         ]);
 
         // Find user by email

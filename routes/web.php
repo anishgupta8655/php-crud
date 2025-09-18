@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth_Controller;
+use App\Http\Controllers\Hero_Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -19,9 +20,13 @@ Route::delete('/products/{product}', [ProductController::class, 'delete'])->name
 // Auth routes
 Route::get('/login', [Auth_Controller::class, 'login'])->name('login');
 Route::post('/login', [Auth_Controller::class, 'loginUser'])->name('login.user');
-
 Route::get('/register', [Auth_Controller::class, 'register'])->name('register');
 Route::post('/register', [Auth_Controller::class, 'registerUser'])->name('register.user');
+Route::get('/logout', [Auth_Controller::class, 'logout'])->name('logout'); 
+Route::get('/dashboard', [Auth_Controller::class, 'dashboard'])->name('dashboard'); 
 
-Route::get('/dashboard', [Auth_Controller::class, 'dashboard'])->name('dashboard'); // ✅ added
-Route::get('/logout', [Auth_Controller::class, 'logout'])->name('logout');
+
+//herosection route;
+
+Route::get('/heroSaved', [Hero_Controller::class, 'heroSaved'])->name('heroSaved');
+Route::post('/heroSend', [Hero_Controller::class, 'heroSend'])->name('heroSend');

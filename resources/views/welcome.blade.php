@@ -36,6 +36,10 @@
                                     <a href="{{ route('register') }}" class="nav-link">Register</a>
                                 </li>
                             @endif
+
+                              <li class="nav-item">
+                                <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                            </li>
                         @endauth
                     </ul>
                 </div>

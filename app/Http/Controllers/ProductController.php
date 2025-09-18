@@ -81,33 +81,35 @@ class ProductController extends Controller
                 ->withErrors($validator);
         }
 
-        $product = Product::findOrFail($id);
-        $product->name = $request->input('name');
-        $product->sku = $request->input('sku');
-        $product->price = $request->input('price');
-        $product->description = $request->input('description');
+            $product = Product::findOrFail($id);
+            $product->name = $request->input('name');
+            $product->sku = $request->input('sku');
+            $product->price = $request->input('price');
+            $product->description = $request->input('description');
 
         // Update image if a new one is uploaded
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $imageName);
-            $product->image = 'images/' . $imageName;
-        }
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->move(public_path('images'), $imageName);
+                $product->image = 'images/' . $imageName;
+            }
 
         $product->save();
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
-    // Delete product (placeholder)
+    // Delete    product    (placeholder)
     public function delete($id)
     {
         $product = Product::findOrFail($id);
         if ($product->image && file_exists(public_path($product->image))) {
             unlink(public_path($product->image)); // remove image from public folder
         }
+
         $product->delete();
+
 
         return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
     }

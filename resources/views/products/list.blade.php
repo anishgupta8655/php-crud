@@ -28,6 +28,7 @@
             </div>
         </div>
 
+
         {{-- Success Message --}}
         @if (session('success'))
             <div class="alert alert-success">
@@ -35,6 +36,7 @@
             </div>
         @endif
 
+        
         {{-- Product Table --}}
         <table class="table table-striped table-hover table-bordered align-middle">
             <thead class="table-dark text-center">
