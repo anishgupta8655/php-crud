@@ -37,7 +37,7 @@
                                 </li>
                             @endif
 
-                              <li class="nav-item">
+                            <li class="nav-item">
                                 <a href="{{ route('logout') }}" class="nav-link">Logout</a>
                             </li>
                         @endauth
@@ -68,7 +68,7 @@
                             <h5 class="card-title">Special title treatment</h5>
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.
                             </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <a href="{{ route('carousels') }}" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
                 </div>

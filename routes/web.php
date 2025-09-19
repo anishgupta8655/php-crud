@@ -8,6 +8,9 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/carousels', function () {
+    return view('carousels'); // ✅ must match your blade filename
+})->name('carousels');
 
 // Product routes
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -17,13 +20,15 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [ProductController::class, 'delete'])->name('products.delete');
 
+
+
 // Auth routes
 Route::get('/login', [Auth_Controller::class, 'login'])->name('login');
 Route::post('/login', [Auth_Controller::class, 'loginUser'])->name('login.user');
 Route::get('/register', [Auth_Controller::class, 'register'])->name('register');
 Route::post('/register', [Auth_Controller::class, 'registerUser'])->name('register.user');
-Route::get('/logout', [Auth_Controller::class, 'logout'])->name('logout'); 
-Route::get('/dashboard', [Auth_Controller::class, 'dashboard'])->name('dashboard'); 
+Route::get('/logout', [Auth_Controller::class, 'logout'])->name('logout');
+Route::get('/dashboard', [Auth_Controller::class, 'dashboard'])->name('dashboard');
 
 
 //herosection route;

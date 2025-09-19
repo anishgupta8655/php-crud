@@ -49,6 +49,12 @@ class Auth_Controller extends Controller
         // Find user by email
         $user = User::where('email', $request->email)->first();
 
+        if (!$user) {
+            return redirect()->route('register')
+                ->with('error', 'Please register first before logging in.');
+        }
+
+
         if ($user && Hash::check($request->password, $user->password)) {
             // Store user manually in session
             session(['user' => $user]);
